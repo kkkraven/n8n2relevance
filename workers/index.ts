@@ -1,13 +1,15 @@
 import { Hono } from 'hono'
 import bcrypt from 'bcryptjs'
-import { sign } from 'jsonwebtoken'
-import { validateJwt, limitConversions, EnvBindings } from './middleware'
+import jwt from 'jsonwebtoken'
+import type { JwtPayload } from 'jsonwebtoken'
+const { sign } = jwt
+import { validateJwt, limitConversions, EnvBindings } from './middleware.js'
 
 interface Env extends EnvBindings {
   DB: D1Database
 }
 
-const app = new Hono<{ Bindings: Env }>()
+const app = new Hono<{ Bindings: Env; Variables: { jwtPayload: JwtPayload } }>()
 
 app.post('/api/register', async c => {
   const { email, password } = await c.req.json()

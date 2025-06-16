@@ -1,12 +1,14 @@
 import { MiddlewareHandler } from 'hono'
-import { verify, JwtPayload } from 'jsonwebtoken'
+import jwt from 'jsonwebtoken'
+import type { JwtPayload } from 'jsonwebtoken'
+const { verify } = jwt
 
 export interface EnvBindings {
   TOKEN_SECRET: string
   CONVERSION_KV: KVNamespace
 }
 
-export const validateJwt = (): MiddlewareHandler<{ Bindings: EnvBindings }> => {
+export const validateJwt = (): MiddlewareHandler<{ Bindings: EnvBindings; Variables: { jwtPayload: JwtPayload } }> => {
   return async (c, next) => {
     const header = c.req.header('Authorization')
     if (!header) return c.json({ error: 'Unauthorized' }, 401)
@@ -21,7 +23,7 @@ export const validateJwt = (): MiddlewareHandler<{ Bindings: EnvBindings }> => {
   }
 }
 
-export const limitConversions = (limit: number): MiddlewareHandler<{ Bindings: EnvBindings }> => {
+export const limitConversions = (limit: number): MiddlewareHandler<{ Bindings: EnvBindings; Variables: { jwtPayload: JwtPayload } }> => {
   return async (c, next) => {
     const payload = c.get('jwtPayload') as JwtPayload
     const key = `count:${payload.sub ?? payload.id}`
