@@ -1,0 +1,28 @@
+{
+  "name": "n8n2relevance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:fe": "vitest run",
+    "test:worker": "jest",
+    "test": "npm run test:fe && npm run test:worker",
+    "build": "vite build",
+    "deploy": "wrangler deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "jest": "^30.0.0",
+    "jsdom": "^26.1.0",
+    "ts-jest": "^29.4.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-tsconfig-paths": "^5.1.4",
+    "vitest": "^3.2.3",
+    "wrangler": "^4.20.0"
+  }
+}
