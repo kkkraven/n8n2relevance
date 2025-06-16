@@ -29,7 +29,7 @@ app.post('/api/login', async c => {
   const match = await bcrypt.compare(password, result.password)
   if (!match) return c.json({ error: 'Invalid credentials' }, 401)
   const token = sign({ id: result.id, email }, c.env.TOKEN_SECRET, {
-    expiresIn: '1h',
+    expiresIn: '1h', // token valid for one hour
   })
   return c.json({ token })
 })
