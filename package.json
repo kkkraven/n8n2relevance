@@ -1,0 +1,21 @@
+{
+  "name": "n8n2relevance",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "archiver": "^7.0.1",
+    "aws-sdk": "^2.1692.0",
+    "express": "^5.1.0",
+    "multer": "^2.0.1",
+    "sqlite3": "^5.1.7",
+    "uuid": "^11.1.0"
+  }
+}
