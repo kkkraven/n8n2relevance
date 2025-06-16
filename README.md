@@ -1,5 +1,13 @@
 # n8n2relevance
 
+
+This project exposes a Cloudflare Worker built with the Hono framework.
+It includes `/api/register` and `/api/login` for user management backed by D1.
+Passwords are hashed using bcrypt before storage.
+
+Authenticated requests must provide a JWT issued by `/api/login`.
+Tokens expire after one hour. Conversion requests are limited using KV storage.
+
 n8n2relevance is a small demonstration project that exposes a simple API and single-page application (SPA) for converting n8n workflows into a "relevance" score.
 
 ## Installation
@@ -53,3 +61,4 @@ The front end lives in the `client/` directory and is organised as a typical SPA
 - `src/services/` &mdash; helpers for calling the API.
 
 The SPA communicates with the API endpoints listed above to submit workflows and display the relevance data to the user.
+
