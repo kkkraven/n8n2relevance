@@ -1,0 +1,14 @@
+name = "n8n2relevance-worker"
+main = "workers/index.ts"
+compatibility_date = "2024-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "n8n2relevance_db"
+database_id = "<your-d1-database-id>"
+
+[[kv_namespaces]]
+binding = "KV"
+id = "<your-kv-namespace-id>"
+
+pages_build_output_dir = "./frontend/dist"

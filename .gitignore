@@ -1,3 +1,12 @@
 node_modules/
-dist/
-tmp/
+
+build/
+frontend/dist/
+.env
+.env.*
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
